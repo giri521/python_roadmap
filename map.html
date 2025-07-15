@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +21,13 @@
             --gray: #a0aec0;
             --gray-light: #e2e8f0;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -37,7 +36,7 @@
             min-height: 100vh;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -46,7 +45,7 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        
+
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
@@ -55,7 +54,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .header::before {
             content: "";
             position: absolute;
@@ -67,17 +66,17 @@
             transform: rotate(30deg);
             animation: shine 8s infinite linear;
         }
-        
+
         @keyframes shine {
             0% { transform: rotate(30deg) translate(-10%, -10%); }
             100% { transform: rotate(30deg) translate(10%, 10%); }
         }
-        
+
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
         }
-        
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
@@ -85,32 +84,32 @@
             z-index: 1;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        
+
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
             position: relative;
             z-index: 1;
         }
-        
+
         .welcome-section {
             padding: 30px;
             text-align: center;
             background-color: white;
             border-bottom: 1px solid var(--gray-light);
         }
-        
+
         .welcome-message {
             font-size: 1.3rem;
             margin-bottom: 20px;
             color: var(--darker);
         }
-        
+
         .user-name {
             font-weight: 600;
             color: var(--primary);
         }
-        
+
         .input-section {
             padding: 30px;
             background-color: var(--light);
@@ -120,16 +119,16 @@
             transform: translateY(0);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .input-section:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         label {
             display: block;
             margin-bottom: 8px;
@@ -137,7 +136,7 @@
             color: var(--darker);
             font-size: 1rem;
         }
-        
+
         input, select, button {
             width: 100%;
             padding: 15px;
@@ -147,13 +146,13 @@
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s ease;
         }
-        
+
         input:focus, select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(55, 118, 171, 0.2);
         }
-        
+
         button {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
@@ -165,16 +164,16 @@
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(55, 118, 171, 0.3);
         }
-        
+
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 7px 14px rgba(55, 118, 171, 0.3);
         }
-        
+
         button:active {
             transform: translateY(0);
         }
-        
+
         button::after {
             content: "";
             position: absolute;
@@ -187,12 +186,12 @@
             transition: all 0.5s ease;
             opacity: 0;
         }
-        
+
         button:hover::after {
             opacity: 1;
             animation: shine 1.5s infinite;
         }
-        
+
         .progress-section {
             padding: 20px;
             margin: 20px;
@@ -200,7 +199,7 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        
+
         .progress-container {
             height: 12px;
             background-color: var(--gray-light);
@@ -208,7 +207,7 @@
             overflow: hidden;
             margin-bottom: 10px;
         }
-        
+
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, var(--success) 0%, #68d391 100%);
@@ -217,7 +216,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .progress-bar::after {
             content: "";
             position: absolute;
@@ -228,19 +227,19 @@
             background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
             animation: shimmer 2s infinite;
         }
-        
+
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
-        
+
         .stats {
             display: flex;
             justify-content: space-between;
             margin-top: 15px;
             font-size: 0.9rem;
         }
-        
+
         .stat-item {
             display: flex;
             flex-direction: column;
@@ -252,29 +251,29 @@
             margin: 0 5px;
             transition: all 0.3s ease;
         }
-        
+
         .stat-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        
+
         .stat-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
         }
-        
+
         .stat-label {
             font-size: 0.8rem;
             color: var(--gray);
             margin-top: 5px;
         }
-        
+
         .roadmap {
             display: none;
             padding: 20px;
         }
-        
+
         .day-card {
             background-color: white;
             border-radius: 15px;
@@ -285,27 +284,27 @@
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             position: relative;
         }
-        
+
         .day-card:hover {
             transform: perspective(1000px) rotateX(5deg);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
+
         .day-card.completed {
             border-left: 6px solid var(--success);
         }
-        
+
         .day-card.current {
             border-left: 6px solid var(--primary);
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(55, 118, 171, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(55, 118, 171, 0); }
             100% { box-shadow: 0 0 0 0 rgba(55, 118, 171, 0); }
         }
-        
+
         .day-header {
             padding: 20px;
             background-color: var(--light);
@@ -314,18 +313,18 @@
             align-items: center;
             cursor: pointer;
         }
-        
+
         .day-title {
             font-weight: 600;
             color: var(--darker);
             font-size: 1.1rem;
         }
-        
+
         .day-date {
             color: var(--gray);
             font-size: 0.9rem;
         }
-        
+
         .day-status {
             display: inline-block;
             padding: 3px 8px;
@@ -335,45 +334,45 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .status-upcoming {
             background-color: var(--gray-light);
             color: var(--gray);
         }
-        
+
         .status-current {
             background-color: var(--info);
             color: white;
         }
-        
+
         .status-completed {
             background-color: var(--success);
             color: white;
         }
-        
+
         .day-content {
             padding: 0 20px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease, padding 0.5s ease;
         }
-        
+
         .day-card.active .day-content {
             padding: 20px;
             max-height: 1000px;
         }
-        
+
         .topic-item {
             display: flex;
             align-items: center;
             padding: 10px 0;
             border-bottom: 1px solid var(--gray-light);
         }
-        
+
         .topic-item:last-child {
             border-bottom: none;
         }
-        
+
         .topic-checkbox {
             appearance: none;
             width: 22px;
@@ -385,17 +384,17 @@
             position: relative;
             transition: all 0.2s ease;
         }
-        
+
         .topic-checkbox:hover {
             border-color: var(--primary);
             transform: scale(1.1);
         }
-        
+
         .topic-checkbox:checked {
             background-color: var(--success);
             border-color: var(--success);
         }
-        
+
         .topic-checkbox:checked::after {
             content: "✓";
             position: absolute;
@@ -405,18 +404,18 @@
             left: 3px;
             top: -1px;
         }
-        
+
         .topic-label {
             flex: 1;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .topic-checkbox:checked + .topic-label {
             color: var(--gray);
             text-decoration: line-through;
         }
-        
+
         .congrats-message {
             display: none;
             padding: 20px;
@@ -427,12 +426,12 @@
             text-align: center;
             animation: fadeIn 0.5s ease;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .confetti {
             position: absolute;
             width: 10px;
@@ -441,12 +440,12 @@
             border-radius: 50%;
             animation: confetti-fall 3s linear forwards;
         }
-        
+
         @keyframes confetti-fall {
             0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(1000px) rotate(720deg); opacity: 0; }
         }
-        
+
         .edit-section {
             display: none;
             padding: 20px;
@@ -455,19 +454,19 @@
             margin: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        
+
         .completion-date {
             text-align: center;
             margin: 20px 0;
             font-size: 1.1rem;
             color: var(--darker);
         }
-        
+
         .highlight {
             color: var(--primary);
             font-weight: 600;
         }
-        
+
         .resources {
             padding: 20px;
             background-color: white;
@@ -475,21 +474,21 @@
             margin: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        
+
         .resource-list {
             list-style-type: none;
             margin-top: 15px;
         }
-        
+
         .resource-item {
             padding: 10px 0;
             border-bottom: 1px solid var(--gray-light);
         }
-        
+
         .resource-item:last-child {
             border-bottom: none;
         }
-        
+
         .resource-link {
             color: var(--primary);
             text-decoration: none;
@@ -498,26 +497,26 @@
             display: flex;
             align-items: center;
         }
-        
+
         .resource-link:hover {
             color: var(--primary-light);
             text-decoration: underline;
         }
-        
+
         .resource-link::before {
             content: "→";
             margin-right: 10px;
             color: var(--secondary-dark);
             font-weight: bold;
         }
-        
+
         .reset-btn {
             background: linear-gradient(135deg, var(--danger) 0%, #fc8181 100%);
             margin: 20px auto;
             display: block;
             max-width: 200px;
         }
-        
+
         .floating-emoji {
             position: absolute;
             font-size: 24px;
@@ -525,29 +524,29 @@
             opacity: 0.8;
             z-index: 10;
         }
-        
+
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(10deg); }
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 border-radius: 10px;
             }
-            
+
             .header {
                 padding: 20px;
             }
-            
+
             h1 {
                 font-size: 1.8rem;
             }
-            
+
             .stats {
                 flex-direction: column;
             }
-            
+
             .stat-item {
                 margin: 5px 0;
             }
@@ -560,12 +559,12 @@
             <h1>Python Learning Journey</h1>
             <div class="subtitle">Master Python programming step by step</div>
         </div>
-        
+
         <div class="welcome-section">
             <div class="welcome-message">Welcome, <span class="user-name" id="user-name-display">Coder</span>!</div>
             <div id="personalized-greeting">Let's start your Python learning adventure</div>
         </div>
-        
+
         <div class="progress-section" id="progress-section">
             <h3>Your Progress</h3>
             <div class="progress-container">
@@ -591,7 +590,7 @@
             </div>
             <div class="completion-date" id="completion-date"></div>
         </div>
-        
+
         <div class="input-section" id="input-section">
             <h3>Setup Your Learning Plan</h3>
             <div class="form-group">
@@ -614,7 +613,7 @@
             </div>
             <button id="generate-btn">Create My Learning Plan</button>
         </div>
-        
+
         <div class="edit-section" id="edit-section">
             <h3>Edit Your Plan</h3>
             <div class="form-group">
@@ -629,13 +628,13 @@
             </div>
             <button id="update-btn">Update Plan</button>
         </div>
-        
+
         <div id="roadmap" class="roadmap">
             <h2>Your Learning Roadmap</h2>
             <div id="days-container"></div>
-            
+
             <div id="congrats-message" class="congrats-message"></div>
-            
+
             <div class="resources">
                 <h3>Helpful Resources</h3>
                 <ul class="resource-list">
@@ -645,7 +644,7 @@
                     <li class="resource-item"><a href="https://automatetheboringstuff.com/" class="resource-link" target="_blank">Automate the Boring Stuff</a></li>
                 </ul>
             </div>
-            
+
             <button id="reset-btn" class="reset-btn">Reset My Progress</button>
         </div>
     </div>
@@ -749,180 +748,180 @@
             const name = nameInput.value.trim() || 'Coder';
             const startDate = new Date(startDateInput.value);
             const dailyHours = parseFloat(dailyHoursInput.value);
-            
+
             if (isNaN(startDate.getTime())) {
                 showAlert('Please select a valid start date');
                 return;
             }
-            
+
             if (dailyHours <= 0) {
                 showAlert('Please enter a valid number of hours per day');
                 return;
             }
-            
+
             // Save user name
             userNameDisplay.textContent = name;
             localStorage.setItem('pythonUserName', name);
-            
+
             // Update greeting based on time of day
             updateGreeting(name);
-            
+
             // Clear previous roadmap
             daysContainer.innerHTML = '';
-            
+
             let currentDate = new Date(startDate);
             let topicIndex = 0;
             let dayCount = 1;
             let totalTopics = 0;
-            
+
             // Calculate total topics for progress tracking
             pythonTopics.forEach(topic => {
                 totalTopics += topic.subtopics.length;
             });
-            
+
             totalCount.textContent = totalTopics;
-            
+
             // Create day cards for each topic
             while (topicIndex < pythonTopics.length) {
                 const topic = pythonTopics[topicIndex];
                 const hoursNeeded = topic.hours;
                 const daysNeeded = Math.ceil(hoursNeeded / dailyHours);
-                
+
                 for (let day = 1; day <= daysNeeded; day++) {
                     const dayCard = document.createElement('div');
                     dayCard.className = 'day-card';
                     dayCard.dataset.date = currentDate.toISOString().split('T')[0];
-                    
+
                     const dateString = currentDate.toLocaleDateString('en-US', { 
                         weekday: 'long', 
                         month: 'short', 
                         day: 'numeric' 
                     });
-                    
+
                     const dayTitle = document.createElement('div');
                     dayTitle.className = 'day-title';
                     dayTitle.textContent = `Day ${dayCount}: ${topic.name} ${daysNeeded > 1 ? `(Part ${day}/${daysNeeded})` : ''}`;
-                    
+
                     const dayDate = document.createElement('div');
                     dayDate.className = 'day-date';
                     dayDate.textContent = dateString;
-                    
+
                     const dayStatus = document.createElement('div');
                     dayStatus.className = 'day-status status-upcoming';
                     dayStatus.textContent = 'Upcoming';
-                    
+
                     const dayHeader = document.createElement('div');
                     dayHeader.className = 'day-header';
                     dayHeader.appendChild(dayTitle);
                     dayHeader.appendChild(dayDate);
                     dayHeader.appendChild(dayStatus);
-                    
+
                     dayCard.appendChild(dayHeader);
-                    
+
                     // Add subtopics for this day
                     const subtopicsPerDay = Math.ceil(topic.subtopics.length / daysNeeded);
                     const startIndex = (day - 1) * subtopicsPerDay;
                     const endIndex = Math.min(startIndex + subtopicsPerDay, topic.subtopics.length);
-                    
+
                     const dayContent = document.createElement('div');
                     dayContent.className = 'day-content';
-                    
+
                     for (let i = startIndex; i < endIndex; i++) {
                         const subtopic = topic.subtopics[i];
                         const topicItem = document.createElement('div');
                         topicItem.className = 'topic-item';
-                        
+
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
                         checkbox.className = 'topic-checkbox';
                         checkbox.id = `topic-${topicIndex}-${i}`;
                         checkbox.dataset.topicIndex = topicIndex;
                         checkbox.dataset.subtopicIndex = i;
-                        
+
                         // Check if this topic was previously completed
                         const savedData = loadProgress();
-                        if (savedData && savedData.completedTopics[`${topicIndex}-${i}`]) {
+                        if (savedData && savedData.completedTopics && savedData.completedTopics[`${topicIndex}-${i}`]) {
                             checkbox.checked = true;
                         }
-                        
+
                         checkbox.addEventListener('change', function() {
                             if (this.checked) {
                                 saveCompletedTopic(topicIndex, i);
-                                showCongrats(subtopic);
+                                showCongrats(subtopic, name);
                                 createConfetti(this);
                             } else {
                                 removeCompletedTopic(topicIndex, i);
                             }
                             updateProgress();
                         });
-                        
+
                         const label = document.createElement('label');
                         label.className = 'topic-label';
                         label.htmlFor = `topic-${topicIndex}-${i}`;
                         label.textContent = subtopic;
-                        
+
                         topicItem.appendChild(checkbox);
                         topicItem.appendChild(label);
                         dayContent.appendChild(topicItem);
                     }
-                    
+
                     dayCard.appendChild(dayContent);
                     daysContainer.appendChild(dayCard);
-                    
+
                     // Add click event to toggle day content
                     dayHeader.addEventListener('click', function() {
                         dayCard.classList.toggle('active');
                     });
-                    
+
                     currentDate.setDate(currentDate.getDate() + 1);
                     dayCount++;
                 }
-                
+
                 topicIndex++;
             }
-            
+
             // Show the roadmap and hide input section
             roadmap.style.display = 'block';
             inputSection.style.display = 'none';
             editSection.style.display = 'none';
             progressSection.style.display = 'block';
-            
+
             // Update progress display
             updateProgress();
-            
+
             // Save the settings
             saveSettings(startDate, dailyHours);
-            
+
             // Calculate and display completion date
             calculateCompletionDate(startDate, dayCount - 1);
-            
+
             // Scroll to roadmap
             roadmap.scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         function updateRoadmap() {
             const dailyHours = parseFloat(editDailyHoursInput.value);
-            
+
             if (dailyHours <= 0) {
                 showAlert('Please enter a valid number of hours per day');
                 return;
             }
-            
+
             // Get saved start date
-            const savedSettings = localStorage.getItem('pythonRoadmapSettings');
+            const savedSettings = loadSettings();
             if (!savedSettings) return;
-            
-            const { startDate } = JSON.parse(savedSettings);
-            startDateInput.value = startDate.split('T')[0];
+
+            const startDate = new Date(savedSettings.startDate);
+            startDateInput.value = startDate.toISOString().split('T')[0];
             dailyHoursInput.value = dailyHours;
-            
+
             // Regenerate roadmap with new daily hours
             generateRoadmap();
-            
+
             // Hide edit section
             editSection.style.display = 'none';
         }
-        
+
         function updateProgress() {
             const checkboxes = document.querySelectorAll('.topic-checkbox');
             let completed = 0;
@@ -930,15 +929,15 @@
             let streak = 0;
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            
+
             checkboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     completed++;
-                    
+
                     // Check if this was completed today or yesterday for streak
                     const dayCard = checkbox.closest('.day-card');
                     const topicDate = new Date(dayCard.dataset.date);
-                    
+
                     // Update day card status
                     if (dayCard) {
                         dayCard.classList.add('completed');
@@ -948,7 +947,7 @@
                             statusElement.textContent = 'Completed';
                         }
                     }
-                    
+
                     if (topicDate.toDateString() === today.toDateString()) {
                         lastCompletedDate = today;
                     } else if (
@@ -969,7 +968,7 @@
                     }
                 }
             });
-            
+
             // Mark current day
             const dayCards = document.querySelectorAll('.day-card');
             dayCards.forEach(card => {
@@ -985,12 +984,12 @@
                     card.classList.remove('current');
                 }
             });
-            
+
             // Calculate streak
             if (lastCompletedDate) {
                 const yesterday = new Date(today);
                 yesterday.setDate(yesterday.getDate() - 1);
-                
+
                 if (lastCompletedDate.toDateString() === today.toDateString()) {
                     streak = getCurrentStreak() + 1;
                 } else if (lastCompletedDate.toDateString() === yesterday.toDateString()) {
@@ -999,52 +998,53 @@
                     streak = 1;
                 }
             }
-            
+
             // Update UI
             const total = checkboxes.length;
             const percent = Math.round((completed / total) * 100);
-            
+
             completedCount.textContent = completed;
             percentage.textContent = `${percent}%`;
             progressBar.style.width = `${percent}%`;
             streakCount.textContent = streak;
-            
+
             // Update streak in storage
             saveStreak(streak);
         }
-        
+
         function calculateCompletionDate(startDate, totalDays) {
             const completionDateObj = new Date(startDate);
             completionDateObj.setDate(completionDateObj.getDate() + totalDays);
-            
+
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = completionDateObj.toLocaleDateString('en-US', options);
-            
+
             completionDate.innerHTML = `Estimated completion date: <span class="highlight">${formattedDate}</span>`;
         }
-        
-        function showCongrats(topic) {
+
+        function showCongrats(topic, name) {
             const messages = [
-                `Great job completing "${topic}"! 🎉`,
-                `You nailed "${topic}"! Keep it up! 👏`,
-                `"${topic}" checked off! You're amazing! 💪`,
-                `Boom! "${topic}" is done! 🚀`,
-                `Another one bites the dust! "${topic}" completed! 🎯`
+                `Great job ${name} on completing "${topic}"! 🎉`,
+                `You nailed "${topic}" ${name}! Keep it up! 👏`,
+                `"${topic}" checked off ${name}! You're amazing! 💪`,
+                `Boom! "${topic}" is done ${name}! 🚀`,
+                `Another one bites the dust ${name}! "${topic}" completed! 🎯`
             ];
-            
+
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             congratsMessage.textContent = randomMessage;
             congratsMessage.style.display = 'block';
-            
+
             // Hide after 5 seconds
             setTimeout(() => {
                 congratsMessage.style.display = 'none';
             }, 5000);
         }
-              function createConfetti(element) {
+
+        function createConfetti(element) {
             const rect = element.getBoundingClientRect();
             const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-            
+
             for (let i = 0; i < 20; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
@@ -1054,20 +1054,20 @@
                 confetti.style.width = `${Math.random() * 10 + 5}px`;
                 confetti.style.height = `${Math.random() * 10 + 5}px`;
                 confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                
+
                 document.body.appendChild(confetti);
-                
+
                 // Remove confetti after animation
                 setTimeout(() => {
                     confetti.remove();
                 }, 3000);
             }
         }
-        
+
         function updateGreeting(name) {
             const hour = new Date().getHours();
             let greeting;
-            
+
             if (hour < 12) {
                 greeting = `Good morning, ${name}! Ready to learn some Python?`;
             } else if (hour < 18) {
@@ -1075,10 +1075,10 @@
             } else {
                 greeting = `Good evening, ${name}! Perfect time to code in Python!`;
             }
-            
+
             personalizedGreeting.textContent = greeting;
         }
-        
+
         function saveSettings(startDate, dailyHours) {
             const settings = {
                 startDate: startDate.toISOString(),
@@ -1086,39 +1086,48 @@
             };
             localStorage.setItem('pythonRoadmapSettings', JSON.stringify(settings));
         }
-        
+
         function saveCompletedTopic(topicIndex, subtopicIndex) {
-            const savedData = loadProgress() || { completedTopics: {} };
+            let savedData = loadProgress();
+            if (!savedData) {
+                savedData = { completedTopics: {} };
+            } else if (!savedData.completedTopics) {
+                savedData.completedTopics = {};
+            }
+            
             savedData.completedTopics[`${topicIndex}-${subtopicIndex}`] = true;
             localStorage.setItem('pythonProgress', JSON.stringify(savedData));
         }
-        
+
         function removeCompletedTopic(topicIndex, subtopicIndex) {
             const savedData = loadProgress();
-            if (!savedData) return;
-            
+            if (!savedData || !savedData.completedTopics) return;
+
             delete savedData.completedTopics[`${topicIndex}-${subtopicIndex}`];
             localStorage.setItem('pythonProgress', JSON.stringify(savedData));
         }
-        
+
         function saveStreak(streak) {
-            const savedData = loadProgress() || { completedTopics: {} };
+            let savedData = loadProgress();
+            if (!savedData) {
+                savedData = { completedTopics: {} };
+            }
             savedData.streak = streak;
             savedData.lastStreakUpdate = new Date().toISOString();
             localStorage.setItem('pythonProgress', JSON.stringify(savedData));
         }
-        
+
         function getCurrentStreak() {
             const savedData = loadProgress();
             if (!savedData || !savedData.streak) return 0;
-            
+
             // Check if streak is still valid (not broken)
             if (savedData.lastStreakUpdate) {
                 const lastUpdate = new Date(savedData.lastStreakUpdate);
                 const today = new Date();
                 const yesterday = new Date(today);
                 yesterday.setDate(yesterday.getDate() - 1);
-                
+
                 // If last update was yesterday or today, streak continues
                 if (
                     lastUpdate.toDateString() === today.toDateString() ||
@@ -1127,28 +1136,29 @@
                     return savedData.streak;
                 }
             }
-            
+
             return 0;
         }
-        
+
         function loadProgress() {
             const savedData = localStorage.getItem('pythonProgress');
             return savedData ? JSON.parse(savedData) : null;
         }
-        
+
         function loadSettings() {
             const savedSettings = localStorage.getItem('pythonRoadmapSettings');
             return savedSettings ? JSON.parse(savedSettings) : null;
         }
-        
+
         function checkForSavedData() {
             // Check for saved name
             const savedName = localStorage.getItem('pythonUserName');
             if (savedName) {
                 userNameDisplay.textContent = savedName;
+                nameInput.value = savedName;
                 updateGreeting(savedName);
             }
-            
+
             // Check for saved progress
             const savedProgress = loadProgress();
             if (savedProgress) {
@@ -1156,49 +1166,49 @@
                 roadmap.style.display = 'block';
                 inputSection.style.display = 'none';
                 progressSection.style.display = 'block';
-                
+
                 // Load settings and generate roadmap
                 const savedSettings = loadSettings();
                 if (savedSettings) {
                     startDateInput.value = savedSettings.startDate.split('T')[0];
                     dailyHoursInput.value = savedSettings.dailyHours;
                     editDailyHoursInput.value = savedSettings.dailyHours;
-                    
+
                     generateRoadmap();
                 }
             }
         }
-        
+
         function resetProgress() {
             if (confirm('Are you sure you want to reset all your progress? This cannot be undone.')) {
                 localStorage.removeItem('pythonProgress');
                 localStorage.removeItem('pythonRoadmapSettings');
-                
+
                 // Reset UI
                 progressBar.style.width = '0%';
                 completedCount.textContent = '0';
                 percentage.textContent = '0%';
                 streakCount.textContent = '0';
-                
+
                 // Regenerate roadmap to clear checkboxes
                 generateRoadmap();
-                
+
                 // Show input section
                 roadmap.style.display = 'none';
                 inputSection.style.display = 'block';
                 progressSection.style.display = 'none';
             }
         }
-        
+
         function showAlert(message) {
             alert(message);
         }
-        
+
         // Add floating emojis for fun
         function addFloatingEmojis() {
             const emojis = ['🐍', '✨', '🚀', '💻', '🧠', '📚', '🎯'];
             const container = document.querySelector('.container');
-            
+
             for (let i = 0; i < 5; i++) {
                 const emoji = document.createElement('div');
                 emoji.className = 'floating-emoji';
@@ -1210,7 +1220,7 @@
                 container.appendChild(emoji);
             }
         }
-        
+
         // Initialize
         addFloatingEmojis();
     </script>

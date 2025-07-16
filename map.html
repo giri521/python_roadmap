@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Learning Journey</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3776ab;
-            --primary-light: #5a9bd5;
-            --secondary: #ffd43b;
-            --secondary-dark: #ffc107;
-            --light: #f8f9fa;
-            --dark: #2d3748;
-            --darker: #1a202c;
-            --success: #48bb78;
-            --danger: #f56565;
-            --warning: #ed8936;
-            --info: #4299e1;
-            --gray: #a0aec0;
-            --gray-light: #e2e8f0;
+            --primary: #6ee7b7;
+            --primary-dark: #10b981;
+            --primary-light: #a7f3d0;
+            --secondary: #93c5fd;
+            --accent: #f59e0b;
+            --dark: #111827;
+            --darker: #0f172a;
+            --darkest: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --gray-dark: #64748b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
         }
 
         * {
@@ -29,28 +31,59 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--light);
+            background-color: var(--darkest);
             min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(110,231,183,0.1) 0%, rgba(16,185,129,0) 70%);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+            25% { transform: translate(10vw, 10vh) rotate(90deg); opacity: 0.8; }
+            50% { transform: translate(20vw, -5vh) rotate(180deg); opacity: 0.6; }
+            75% { transform: translate(-10vw, 15vh) rotate(270deg); opacity: 0.9; }
+            100% { transform: translate(0, 0) rotate(360deg); opacity: 0.5; }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%);
             color: white;
-            padding: 30px;
+            padding: 2.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -74,16 +107,16 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
+            letter-spacing: -0.025em;
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
             position: relative;
             z-index: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .subtitle {
@@ -91,84 +124,101 @@
             opacity: 0.9;
             position: relative;
             z-index: 1;
+            font-weight: 400;
         }
 
         .welcome-section {
-            padding: 30px;
+            padding: 2rem;
             text-align: center;
-            background-color: white;
-            border-bottom: 1px solid var(--gray-light);
+            background: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .welcome-message {
             font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--darker);
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-weight: 500;
         }
 
         .user-name {
             font-weight: 600;
             color: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .input-section {
-            padding: 30px;
-            background-color: var(--light);
-            border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 16px;
+            margin: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             transform: translateY(0);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .input-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            border-color: rgba(110, 231, 183, 0.3);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--darker);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: var(--light);
             font-size: 1rem;
         }
 
-        input, select, button {
+        input, select {
             width: 100%;
-            padding: 15px;
-            border: 2px solid var(--gray-light);
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
+            color: var(--light);
         }
 
         input:focus, select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(55, 118, 171, 0.2);
+            box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.2);
         }
 
         button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--info) 100%);
+            color: var(--darkest);
             font-weight: 600;
             border: none;
+            border-radius: 10px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 1rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(55, 118, 171, 0.3);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 14px rgba(55, 118, 171, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
         }
 
         button:active {
@@ -194,24 +244,26 @@
         }
 
         .progress-section {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            margin: 1.5rem;
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .progress-container {
             height: 12px;
-            background-color: var(--gray-light);
+            background: rgba(15, 23, 42, 0.6);
             border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
         }
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--success) 0%, #68d391 100%);
+            background: linear-gradient(90deg, var(--primary) 0%, var(--info) 100%);
             width: 0%;
             transition: width 0.5s ease;
             position: relative;
@@ -235,89 +287,96 @@
         }
 
         .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-size: 0.9rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.5rem;
         }
 
         .stat-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px;
-            border-radius: 8px;
-            background-color: var(--light);
-            flex: 1;
-            margin: 0 5px;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.6);
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .stat-item:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: rgba(110, 231, 183, 0.3);
         }
 
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--gray);
-            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .roadmap {
             display: none;
-            padding: 20px;
+            padding: 1.5rem;
         }
 
         .day-card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
             overflow: hidden;
-            transform: perspective(1000px) rotateX(0deg);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .day-card:hover {
-            transform: perspective(1000px) rotateX(5deg);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            border-color: rgba(110, 231, 183, 0.3);
         }
 
         .day-card.completed {
-            border-left: 6px solid var(--success);
+            border-left: 4px solid var(--success);
         }
 
         .day-card.current {
-            border-left: 6px solid var(--primary);
+            border-left: 4px solid var(--primary);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(55, 118, 171, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(55, 118, 171, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(55, 118, 171, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(110, 231, 183, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0); }
         }
 
         .day-header {
-            padding: 20px;
-            background-color: var(--light);
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .day-header:hover {
+            background: rgba(30, 41, 59, 0.6);
         }
 
         .day-title {
             font-weight: 600;
-            color: var(--darker);
+            color: var(--light);
             font-size: 1.1rem;
         }
 
@@ -328,46 +387,46 @@
 
         .day-status {
             display: inline-block;
-            padding: 3px 8px;
+            padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .status-upcoming {
-            background-color: var(--gray-light);
+            background: rgba(148, 163, 184, 0.2);
             color: var(--gray);
         }
 
         .status-current {
-            background-color: var(--info);
+            background: var(--info);
             color: white;
         }
 
         .status-completed {
-            background-color: var(--success);
+            background: var(--success);
             color: white;
         }
 
         .day-content {
-            padding: 0 20px;
+            padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .day-card.active .day-content {
-            padding: 20px;
+            padding: 1.5rem;
             max-height: 1000px;
         }
 
         .topic-item {
             display: flex;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--gray-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .topic-item:last-child {
@@ -378,12 +437,13 @@
             appearance: none;
             width: 22px;
             height: 22px;
-            border: 2px solid var(--gray);
+            border: 2px solid var(--gray-dark);
             border-radius: 6px;
-            margin-right: 15px;
+            margin-right: 1rem;
             cursor: pointer;
             position: relative;
             transition: all 0.2s ease;
+            background: rgba(15, 23, 42, 0.6);
         }
 
         .topic-checkbox:hover {
@@ -410,6 +470,7 @@
             flex: 1;
             cursor: pointer;
             transition: all 0.3s ease;
+            color: var(--light);
         }
 
         .topic-checkbox:checked + .topic-label {
@@ -419,11 +480,11 @@
 
         .congrats-message {
             display: none;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--success) 0%, #68d391 100%);
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--success) 0%, var(--info) 100%);
             color: white;
-            border-radius: 10px;
-            margin: 20px 0;
+            border-radius: 12px;
+            margin: 1.5rem;
             text-align: center;
             animation: fadeIn 0.5s ease;
             position: fixed;
@@ -431,9 +492,10 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000;
-            width: 80%;
+            width: 90%;
             max-width: 500px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         @keyframes fadeIn {
@@ -445,7 +507,7 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #f00;
+            background-color: var(--primary);
             border-radius: 50%;
             animation: confetti-fall 3s linear forwards;
             z-index: 999;
@@ -458,18 +520,19 @@
 
         .edit-section {
             display: none;
-            padding: 20px;
-            background-color: var(--light);
-            border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 16px;
+            margin: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .completion-date {
             text-align: center;
-            margin: 20px 0;
+            margin: 1.5rem 0;
             font-size: 1.1rem;
-            color: var(--darker);
+            color: var(--light);
         }
 
         .highlight {
@@ -478,21 +541,22 @@
         }
 
         .resources {
-            padding: 20px;
-            background-color: white;
-            border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 16px;
+            margin: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .resource-list {
             list-style-type: none;
-            margin-top: 15px;
+            margin-top: 1rem;
         }
 
         .resource-item {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--gray-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .resource-item:last-child {
@@ -500,7 +564,7 @@
         }
 
         .resource-link {
-            color: var(--primary);
+            color: var(--secondary);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -509,91 +573,118 @@
         }
 
         .resource-link:hover {
-            color: var(--primary-light);
+            color: var(--primary);
             text-decoration: underline;
         }
 
         .resource-link::before {
             content: "→";
-            margin-right: 10px;
-            color: var(--secondary-dark);
+            margin-right: 0.75rem;
+            color: var(--accent);
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover::before {
+            transform: translateX(5px);
         }
 
         .reset-btn {
-            background: linear-gradient(135deg, var(--danger) 0%, #fc8181 100%);
-            margin: 20px auto;
+            background: linear-gradient(135deg, var(--danger) 0%, #f87171 100%);
+            margin: 1.5rem auto;
             display: block;
             max-width: 200px;
         }
 
-        .floating-emoji {
-            position: absolute;
-            font-size: 24px;
-            animation: float 6s ease-in-out infinite;
-            opacity: 0.8;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg) translateX(0); }
-            25% { transform: translateY(-20px) rotate(5deg) translateX(5px); }
-            50% { transform: translateY(-10px) rotate(0deg) translateX(-5px); }
-            75% { transform: translateY(-15px) rotate(-5deg) translateX(5px); }
-        }
-
         .quote-container {
-            padding: 20px;
-            background-color: white;
-            border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 16px;
+            margin: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: center;
             display: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .quote-text {
             font-size: 1.1rem;
             font-style: italic;
-            margin-bottom: 10px;
-            color: var(--darker);
+            margin-bottom: 0.75rem;
+            color: var(--light);
+            line-height: 1.7;
         }
 
         .quote-author {
             font-size: 0.9rem;
             color: var(--gray);
+            font-weight: 500;
+        }
+
+        .floating-code {
+            position: absolute;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float-code 20s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @keyframes float-code {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+            100% { transform: translate(100vw, -100vh) rotate(360deg); opacity: 0; }
         }
 
         @media (max-width: 768px) {
             .container {
-                border-radius: 10px;
+                border-radius: 0;
+                margin-top: 0;
+                margin-bottom: 0;
             }
 
             .header {
-                padding: 20px;
+                padding: 1.5rem;
             }
 
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .stats {
-                flex-direction: column;
+                grid-template-columns: 1fr 1fr;
             }
 
-            .stat-item {
-                margin: 5px 0;
+            .input-section, .progress-section, .resources, .quote-container {
+                margin: 1rem;
             }
             
             .congrats-message {
-                width: 90%;
-                padding: 15px;
+                width: 95%;
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-circle" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="bg-circle" style="width: 200px; height: 200px; top: 60%; left: 80%; animation-delay: 3s;"></div>
+        <div class="bg-circle" style="width: 400px; height: 400px; top: 30%; left: 50%; animation-delay: 6s;"></div>
+        <div class="bg-circle" style="width: 250px; height: 250px; top: 80%; left: 20%; animation-delay: 9s;"></div>
+    </div>
+
+    <!-- Floating Code Elements -->
+    <div class="floating-code" style="top: 10%; left: 5%;">def learn_python():</div>
+    <div class="floating-code" style="top: 20%; left: 30%; animation-delay: 2s;">print("Hello World")</div>
+    <div class="floating-code" style="top: 40%; left: 70%; animation-delay: 4s;">for i in range(10):</div>
+    <div class="floating-code" style="top: 60%; left: 15%; animation-delay: 6s;">class Python:</div>
+    <div class="floating-code" style="top: 80%; left: 50%; animation-delay: 8s;">import this</div>
+
     <div class="container">
         <div class="header">
             <h1>Python Learning Journey</h1>
@@ -1141,7 +1232,7 @@
 
         function createConfetti(element) {
             const rect = element.getBoundingClientRect();
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            const colors = ['#6ee7b7', '#93c5fd', '#f59e0b', '#f87171', '#a78bfa', '#fbbf24'];
 
             for (let i = 0; i < 20; i++) {
                 const confetti = document.createElement('div');
@@ -1304,25 +1395,37 @@
             alert(message);
         }
 
-        // Add floating emojis for fun
-        function addFloatingEmojis() {
-            const emojis = ['🐍', '✨', '🚀', '💻', '🧠', '📚', '🎯'];
-            const container = document.querySelector('.container');
+        // Initialize floating code elements
+        function initFloatingCode() {
+            const codeSnippets = [
+                "def hello_world():",
+                "print('Hello World')",
+                "for i in range(10):",
+                "class Python:",
+                "import math",
+                "if x > 0:",
+                "return True",
+                "try: except:",
+                "lambda x: x**2",
+                "with open('file.txt') as f:"
+            ];
 
-            for (let i = 0; i < 7; i++) {
-                const emoji = document.createElement('div');
-                emoji.className = 'floating-emoji';
-                emoji.textContent = emojis[i];
-                emoji.style.left = `${10 + Math.random() * 80}%`;
-                emoji.style.top = `${10 + Math.random() * 80}%`;
-                emoji.style.animationDelay = `${Math.random() * 5}s`;
-                emoji.style.animationDuration = `${4 + Math.random() * 4}s`;
-                container.appendChild(emoji);
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 10; i++) {
+                const code = document.createElement('div');
+                code.className = 'floating-code';
+                code.textContent = codeSnippets[i];
+                code.style.left = `${Math.random() * 100}%`;
+                code.style.top = `${Math.random() * 100}%`;
+                code.style.animationDelay = `${Math.random() * 10}s`;
+                code.style.animationDuration = `${15 + Math.random() * 15}s`;
+                container.appendChild(code);
             }
         }
 
         // Initialize
-        addFloatingEmojis();
+        initFloatingCode();
         
         // Show a random quote when the page loads if there's progress
         if (localStorage.getItem('pythonProgress')) {

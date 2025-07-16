@@ -44,6 +44,7 @@
             border-radius: 20px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            position: relative;
         }
 
         .header {
@@ -425,11 +426,19 @@
             margin: 20px 0;
             text-align: center;
             animation: fadeIn 0.5s ease;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
         }
 
         .confetti {
@@ -439,6 +448,7 @@
             background-color: #f00;
             border-radius: 50%;
             animation: confetti-fall 3s linear forwards;
+            z-index: 999;
         }
 
         @keyframes confetti-fall {
@@ -520,14 +530,39 @@
         .floating-emoji {
             position: absolute;
             font-size: 24px;
-            animation: float 3s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
             opacity: 0.8;
             z-index: 10;
+            pointer-events: none;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg) translateX(0); }
+            25% { transform: translateY(-20px) rotate(5deg) translateX(5px); }
+            50% { transform: translateY(-10px) rotate(0deg) translateX(-5px); }
+            75% { transform: translateY(-15px) rotate(-5deg) translateX(5px); }
+        }
+
+        .quote-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            display: none;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--darker);
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            color: var(--gray);
         }
 
         @media (max-width: 768px) {
@@ -549,6 +584,11 @@
 
             .stat-item {
                 margin: 5px 0;
+            }
+            
+            .congrats-message {
+                width: 90%;
+                padding: 15px;
             }
         }
     </style>
@@ -631,6 +671,12 @@
 
         <div id="roadmap" class="roadmap">
             <h2>Your Learning Roadmap</h2>
+            
+            <div class="quote-container" id="quote-container">
+                <div class="quote-text" id="daily-quote"></div>
+                <div class="quote-author" id="quote-author"></div>
+            </div>
+            
             <div id="days-container"></div>
 
             <div id="congrats-message" class="congrats-message"></div>
@@ -705,6 +751,50 @@
             ]}
         ];
 
+        // Programming quotes
+        const programmingQuotes = [
+            {
+                text: "The only way to learn a new programming language is by writing programs in it.",
+                author: "Dennis Ritchie"
+            },
+            {
+                text: "Programs must be written for people to read, and only incidentally for machines to execute.",
+                author: "Harold Abelson"
+            },
+            {
+                text: "The most disastrous thing that you can ever learn is your first programming language.",
+                author: "Alan Kay"
+            },
+            {
+                text: "The best error message is the one that never shows up.",
+                author: "Thomas Fuchs"
+            },
+            {
+                text: "First, solve the problem. Then, write the code.",
+                author: "John Johnson"
+            },
+            {
+                text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+                author: "Martin Fowler"
+            },
+            {
+                text: "The most important property of a program is whether it accomplishes the intention of its user.",
+                author: "C.A.R. Hoare"
+            },
+            {
+                text: "Programming is the art of telling another human what one wants the computer to do.",
+                author: "Donald Knuth"
+            },
+            {
+                text: "The only way to go fast is to go well.",
+                author: "Robert C. Martin"
+            },
+            {
+                text: "Programming isn't about what you know; it's about what you can figure out.",
+                author: "Chris Pine"
+            }
+        ];
+
         // DOM elements
         const nameInput = document.getElementById('name-input');
         const startDateInput = document.getElementById('start-date');
@@ -728,6 +818,9 @@
         const inputSection = document.getElementById('input-section');
         const editSection = document.getElementById('edit-section');
         const progressContainer = document.querySelector('.progress-container');
+        const quoteContainer = document.getElementById('quote-container');
+        const dailyQuote = document.getElementById('daily-quote');
+        const quoteAuthor = document.getElementById('quote-author');
 
         // Set today's date as default
         const today = new Date();
@@ -770,7 +863,6 @@
             daysContainer.innerHTML = '';
 
             let currentDate = new Date(startDate);
-            let topicIndex = 0;
             let dayCount = 1;
             let totalTopics = 0;
 
@@ -782,8 +874,7 @@
             totalCount.textContent = totalTopics;
 
             // Create day cards for each topic
-            while (topicIndex < pythonTopics.length) {
-                const topic = pythonTopics[topicIndex];
+            pythonTopics.forEach((topic, topicIndex) => {
                 const hoursNeeded = topic.hours;
                 const daysNeeded = Math.ceil(hoursNeeded / dailyHours);
 
@@ -849,6 +940,7 @@
                                 saveCompletedTopic(topicIndex, i);
                                 showCongrats(subtopic, name);
                                 createConfetti(this);
+                                showDailyQuote();
                             } else {
                                 removeCompletedTopic(topicIndex, i);
                             }
@@ -876,15 +968,14 @@
                     currentDate.setDate(currentDate.getDate() + 1);
                     dayCount++;
                 }
-
-                topicIndex++;
-            }
+            });
 
             // Show the roadmap and hide input section
             roadmap.style.display = 'block';
             inputSection.style.display = 'none';
             editSection.style.display = 'none';
             progressSection.style.display = 'block';
+            quoteContainer.style.display = 'block';
 
             // Update progress display
             updateProgress();
@@ -1041,6 +1132,13 @@
             }, 5000);
         }
 
+        function showDailyQuote() {
+            const randomQuote = programmingQuotes[Math.floor(Math.random() * programmingQuotes.length)];
+            dailyQuote.textContent = randomQuote.text;
+            quoteAuthor.textContent = `— ${randomQuote.author}`;
+            quoteContainer.style.display = 'block';
+        }
+
         function createConfetti(element) {
             const rect = element.getBoundingClientRect();
             const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
@@ -1048,7 +1146,7 @@
             for (let i = 0; i < 20; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
-                confetti.style.left = `${rect.left + rect.width/2}px`;
+                confetti.style.left = `${rect.left + rect.width/2 + (Math.random() - 0.5) * 50}px`;
                 confetti.style.top = `${rect.top}px`;
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.width = `${Math.random() * 10 + 5}px`;
@@ -1166,6 +1264,7 @@
                 roadmap.style.display = 'block';
                 inputSection.style.display = 'none';
                 progressSection.style.display = 'block';
+                quoteContainer.style.display = 'block';
 
                 // Load settings and generate roadmap
                 const savedSettings = loadSettings();
@@ -1197,6 +1296,7 @@
                 roadmap.style.display = 'none';
                 inputSection.style.display = 'block';
                 progressSection.style.display = 'none';
+                quoteContainer.style.display = 'none';
             }
         }
 
@@ -1209,20 +1309,25 @@
             const emojis = ['🐍', '✨', '🚀', '💻', '🧠', '📚', '🎯'];
             const container = document.querySelector('.container');
 
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 7; i++) {
                 const emoji = document.createElement('div');
                 emoji.className = 'floating-emoji';
-                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                emoji.style.left = `${Math.random() * 100}%`;
-                emoji.style.top = `${Math.random() * 100}%`;
+                emoji.textContent = emojis[i];
+                emoji.style.left = `${10 + Math.random() * 80}%`;
+                emoji.style.top = `${10 + Math.random() * 80}%`;
                 emoji.style.animationDelay = `${Math.random() * 5}s`;
-                emoji.style.animationDuration = `${3 + Math.random() * 5}s`;
+                emoji.style.animationDuration = `${4 + Math.random() * 4}s`;
                 container.appendChild(emoji);
             }
         }
 
         // Initialize
         addFloatingEmojis();
+        
+        // Show a random quote when the page loads if there's progress
+        if (localStorage.getItem('pythonProgress')) {
+            showDailyQuote();
+        }
     </script>
 </body>
 </html>
